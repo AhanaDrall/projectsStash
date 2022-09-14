@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Manage Users - Cyber Group HRMS</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description"
+    content="Datta Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+  <meta name="keywords"
+    content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, datta able, datta able bootstrap admin template, free admin theme, free dashboard template" />
+  <meta name="author" content="CodedThemes" />
+
+  <!-- Favicon icon -->
+  <link rel="icon" href="assets/images/logo.png" type="image/x-icon" />
+  <!-- fontawesome icon -->
+  <link rel="stylesheet" href="assets/fonts/fontawesome/css/fontawesome-all.min.css" />
+  <!-- animation css -->
+  <link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/sha256.js"></script>
+
+  <!-- vendor css -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
+
+
+    /* .form{
+  padding: 30px 40px;
+} */
+    .form-ctrl {
+      margin-bottom: 10px;
+      padding-bottom: 20px;
+      position: relative;
+    }
+
+    .form-ctrl label {
+      display: inline-block;
+      /* margin-bottom: 5px; */
+    }
+
+    .form-ctrl input {
+      border: 2px solid #f0f0f0;
+      border-radius: 4px;
+      display: block;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .form-ctrl.success input {
+      border-color: #2ecc71;
+    }
+
+    .form-ctrl.error input {
+      border-color: #e74c3c;
+    }
+
+    .form-ctrl i {
+      position: absolute;
+      top: 40px;
+      right: 10px;
+      visibility: hidden;
+    }
+
+    .form-ctrl.success i.fa-check-circle {
+      color: #2ecc71;
+      visibility: visible;
+    }
+
+    .form-ctrl.error i.fa-exclamation-circle {
+      color: #e74c3c;
+      visibility: visible;
+    }
+
+    .form-ctrl small {
+      visibility: hidden;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .form-ctrl.error small {
+      color: #e74c3c;
+      visibility: visible;
+    }
+  </style>
+
+</head>
+
+<body onload="EmployeeFetchData();">
+  <!-- [ Pre-loader ] start -->
+  <div class="loader-bg">
+    <div class="loader-track">
+      <div class="loader-fill"></div>
+    </div>
+  </div>
+  <!-- [ Pre-loader ] End -->
+
+  <!-- [ navigation menu ] start -->
+  <nav class="pcoded-navbar">
+    <div class="navbar-wrapper">
+      <div class="navbar-brand header-logo">
+        <a href="index.html" class="b-brand">
+          <div>
+            <img src="./assets/images/logo.png" style="width: 80px; height: 90px;padding-top: 5px;" />
+          </div>
+
+        </a>
+        <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
+      </div>
+      <div class="navbar-content scroll-div">
+        <ul class="nav pcoded-inner-navbar">
+          <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item">
+            <a href="index.html" class="nav-link"><span class="pcoded-micon"><i
+                  class="feather icon-home"></i></span><span class="pcoded-mtext">Leave Details</span></a>
+          </li>
+          <li data-username="form elements advance componant validation masking wizard picker select"
+            class="nav-item active">
+            <a href="./Manage_Users.html" class="nav-link "><span class="pcoded-micon"><i
+                  class="feather icon-lock"></i></span><span class="pcoded-mtext">Manage Employees</span></a>
+          </li>
+          <li data-username="Table bootstrap datatable footable" class="nav-item">
+            <a href="./Holiday_List.html" class="nav-link"><span class="pcoded-micon"><i
+                  class="feather icon-server"></i></span><span class="pcoded-mtext">Holiday List</span></a>
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- [ navigation menu ] end -->
+
+  <!-- [ Header ] start -->
+  <header class="navbar pcoded-header navbar-expand-lg navbar-light">
+    <div class="m-header">
+      <a class="mobile-menu" id="mobile-collapse1" href="javascript:"><span></span></a>
+      <a href="index.html" class="b-brand">
+        <div>
+          <img src="./assets/images/logo.png" style="width: 80px; height: 90px;padding-top: 5px;" />
+        </div>
+
+      </a>
+    </div>
+    <a class="mobile-menu" id="mobile-header" href="javascript:">
+      <i class="feather icon-more-horizontal"></i>
+    </a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li>
+          <a href="javascript:" class="full-screen" onclick="javascript:toggleFullScreen()"><i
+              class="feather icon-maximize"></i></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li>
+          <div class="dropdown drp-user">
+            <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="icon feather icon-settings"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right profile-notification">
+              <div class="pro-head">
+                <img src="assets/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image" />
+                <span>Admin</span>
+                <a href="auth-signin.html" class="dud-logout" title="Logout">
+                  <i class="feather icon-log-out"></i>
+                </a>
+              </div>
+              <ul class="pro-body">
+                <li>
+                  <a href="./index.html" class="dropdown-item"><i class="feather icon-user"></i> Leave Details</a>
+                </li>
+                <li>
+                  <a href="../auth-signin.html" class="dropdown-item"><i class="feather icon-lock"></i> Log Out</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <!-- [ Header ] end -->
+
+  <!-- [ Main Content ] start -->
+  <div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+      <div class="pcoded-content">
+        <div class="pcoded-inner-content">
+          <!-- [ breadcrumb ] start -->
+          <div class="page-header">
+            <div class="page-block">
+              <div class="row align-items-center">
+                <div class="col-md-12">
+                  <div class="page-header-title">
+                    <h5 class="m-b-10">Manage Employees</h5>
+                  </div>
+                  <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="index.html"><i class="feather icon-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item">
+                      <a href="javascript:">Manage Employees</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- [ breadcrumb ] end -->
+          <div class="main-body">
+            <div class="page-wrapper">
+              <div class="container">
+
+                <!-- Button trigger modal -->
+                <button type="button" onclick="clearModal()" class="btn btn-secondary" data-toggle="modal"
+                  data-target="#staticBackdrop" style="width: 80px;padding-left:15px;">
+                  <i class="fas fa-user-plus"> Add </i>
+                </button>
+                <br><br>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Add Employee</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+
+                        <form class="form" id="contact_form">
+                          <!-- Text input-->
+
+                          <div class="form-ctrl">
+                            <!-- <label>Employee Name</label> -->
+                            <input name="first_name" id="empname" placeholder="Employee Name" class="form-control"
+                              type="text">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                          </div>
+
+
+                          <!-- Text input-->
+                          <div class="form-ctrl">
+                            <!-- <label>Email</label> -->
+                            <input name="last_name" id="empemailid" placeholder="Email Id" class="form-control"
+                              type="text">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                          </div>
+
+
+                          <div class="form-ctrl">
+                            <input name="user_password" id="emppass" placeholder="Password" class="form-control"
+                              type="password">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                          </div>
+                          <div class="form-ctrl">
+                            <input name="contact_no" id="empcontact" placeholder="(+91)" class="form-control"
+                              type="text">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                          </div>
+                          <div class="form-ctrl">
+
+                            <select id="empdesg" name="department" class="form-control selectpicker"
+                              onclick="checkDesignation()">
+                              <option value="">Select Designation</option>
+                              <option>Manager</option>
+                              <option>SDE</option>
+
+
+                            </select>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+
+                          </div>
+                          <div class="form-ctrl">
+                            <select id="managernamelist" name="department" class="form-control selectpicker">
+                              <option value="">Select Leave Approver</option>
+                            </select>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                          </div>
+
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="checkInputs()">Add New Employee</button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="update2" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                  aria-labelledby="update2Label" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="update2Label">Update Employee</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+
+                        <form class="form" id="contact_form">
+
+                          <div class="form-ctrl">
+                            <input name="first_name" id="emp_name" placeholder="Employee Name" class="form-control"
+                              type="text">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                          </div>
+
+
+                          <!-- Text input-->
+                          <div class="form-ctrl">
+                            <input name="last_name" id="emp_emailid" placeholder="Email Id" class="form-control"
+                              type="text">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                          </div>
+
+                          <div class="form-ctrl">
+
+                            <select id="emp_desg" name="department" class="form-control selectpicker"
+                              onclick="checkDesg()">
+                              <option value="">Select Designation</option>
+                              <option>Manager</option>
+                              <option>SDE</option>
+
+
+                            </select>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+
+                          </div>
+
+                          <div class="form-ctrl">
+                            <input name="contact_no" id="emp_contact" placeholder="(+91)" class="form-control"
+                              type="text">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                          </div>
+
+                          <div class="form-ctrl">
+                            <select id="manager_namelist" name="department" class="form-control selectpicker">
+                              <option value="">Select Leave Approver</option>
+
+                            </select>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                          </div>
+
+                          <div class="form-ctrl">
+                            <select id="activeList" name="department" class="form-control selectpicker">
+                              <option value="">Select Status</option>
+                              <option value="">Active</option>
+                              <option value="">Inactive</option>
+
+                            </select>
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                          </div>
+
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="update();" data-dismiss="modal">Update
+                          Employee</button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-xl-12 col-md-12 m-b-30">
+
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                    aria-controls="home" aria-selected="true">Current Employees</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                    aria-controls="profile" aria-selected="false">Former Employees</a>
+                </li>
+
+              </ul>
+
+              <div class="tab-content" id="myTabContent">
+
+                <div class="tab-pane fade active show" id="home" role="tabpanel">
+                  <input type="text" class="form-control" id="myInput" onkeyup="findCurrentEmployee()"
+                    placeholder="Search for Current Employees" title="Type in a name">
+
+                  <table class="table table-hover myTable">
+                    <thead>
+                      <tr>
+                        <th>Employee Name</th>
+                        <th>Email Id</th>
+                        <th>Designation</th>
+                        <th>Contact</th>
+                        <th>Leave Approver</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="currentemployeedata">
+
+                    </tbody>
+                  </table>
+
+
+
+                </div>
+                <div class="tab-pane fade " id="profile" role="tabpanel">
+                  <input class="form-control" type="text" id="myInput2" onkeyup="findPastEmployee()"
+                    placeholder="Search for Former Employees" title="Type in a name">
+                  <table class="table table-hover myTable2">
+
+                    <thead>
+                      <tr>
+                        <th>Employee Name</th>
+                        <th>Email Id</th>
+                        <th>Designation</th>
+                        <th>Contact</th>
+                        <th>Leave Approver</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="pastemployeedata">
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <script src="assets/js/vendor-all.min.js"></script>
+  <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/pcoded.min.js"></script>
+  <script src="./signin-manage.js"></script>
+  <script src="./managerlist.js"></script>
+  <script src="./pto.js"></script>
+  <script src="./managerusers.js"></script>
+
+
+  <script>
+    // ************************************************
+    // searching and sorting in current employee table
+    // ************************************************
+ 
+    function findCurrentEmployee() {
+      var input, filter, tr, table, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.querySelector(".myTable");
+
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    // ************************************************
+    // searching and sorting in former employee table 
+    // ************************************************
+
+    function findPastEmployee() {
+      var input, filter, tr, table, td, i, txtValue;
+      input = document.getElementById("myInput2");
+      filter = input.value.toUpperCase();
+
+      table = document.querySelector(".myTable2");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

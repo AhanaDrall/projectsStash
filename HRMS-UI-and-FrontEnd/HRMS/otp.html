@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>CYBER GROUP - Reset Password</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description"
+        content="Datta Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+    <meta name="keywords"
+        content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, datta able, datta able bootstrap admin template, free admin theme, free dashboard template" />
+    <meta name="author" content="CodedThemes" />
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="assets/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/sha256.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-content">
+            <div class="auth-bg">
+                <span class="r"></span>
+                <span class="r s"></span>
+                <span class="r s"></span>
+                <span class="r"></span>
+            </div>
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="mb-4">
+                        <i class="fa fa-lock text-c-green" style="font-size:40px;"></i>
+                    </div>
+
+                    <h3 class="mb-4">Reset Password</h3>
+                    <div class="form-ctrl input-group mb-3">
+                        <input type="password" id="pwd" class="form-control" placeholder="New Password">
+
+                    </div>
+                    <div class=" form-ctrl input-group mb-4">
+                        <input type="password" id="pwd2" class="form-control" placeholder="Confirm Password">
+
+                    </div>
+
+                    <button class="btn btn-primary shadow-2 mb-4" onclick="check();">Submit</button>
+                    <p class="mb-0 text-muted"><a href="./auth-signin.html">Back to Login Page</a></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Required Js -->
+    <script src="assets/js/vendor-all.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
+        integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+    <script>
+        function check() {
+            if (pwd.value === '' && pwd2.value === '') {
+                swal({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Password is required.',
+
+                });
+            }
+            else if (pwd.value != pwd2.value) {
+                swal({
+                    icon: 'error',
+                    // title: 'Oops...',
+                    text: 'Passwords do not match.',
+
+                });
+            }
+            else {
+                resetpwd();
+                swal({
+                    icon: 'success',
+                    // title: 'Oops...',
+                    text: 'Password changed successfully.',
+
+                });
+            }
+        }
+        function resetpwd() {
+            var email = window.sessionStorage.getItem("abcd");
+            console.log(email);
+            var pwd_1 = document.getElementById("pwd").value;
+            var pwd_2 = document.getElementById("pwd2").value;
+            if (pwd_1 == pwd_2) {
+
+
+                const key = '55a51621a6648525';
+                const keyutf = CryptoJS.enc.Utf8.parse(key);
+                const iv = CryptoJS.enc.Base64.parse(key);
+                const enc = CryptoJS.AES.encrypt(pwd_1, keyutf, { iv: iv });
+                const encStr = enc.toString();
+                console.log('encStr', encStr);
+                var newpassword = {
+                    "password": encStr
+
+                };
+                fetch("https://localhost:44315/api/employee/pwd/" + email.toString(), {
+                    method: "PATCH",
+                    mode: "cors", // no-cors, *cors, same-origin
+                    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: "same-origin", // include, *same-origin, omit
+                    headers: {
+                        "Content-Type": "application/json",
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    redirect: "follow", // manual, *follow, error
+                    referrerPolicy: "no-referrer",
+                    body: JSON.stringify(newpassword),
+
+                })
+                    .then(response => response.json())
+                    .then((result) => {
+                        console.log(result);
+                        console.log(newpassword);
+                        window.open("http://127.0.0.1:5500/HRMS/auth-signin.html", "_self")
+                    });
+
+
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>

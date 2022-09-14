@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <link rel="stylesheet" href="/index.css"> -->
+    <style>
+        .container{
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.tag-container{
+    border: 2px solid rgb(102, 199, 255);
+    padding: 10px;
+    border-radius: 45px;
+    display:flex;
+}
+
+.tag-container .tag{
+    padding: .5rem 1rem;
+    border: 1px solid rgb(102, 199, 255);
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    background : white;
+    cursor: default;
+}
+.tag-container .tag:hover{
+    background: rgb(151, 217, 255);
+}
+
+.tag i{
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.tag-container input{
+    flex:1;
+    font-size: 16px;
+    padding: 5px;
+    outline: none;
+    border: 0;
+}
+
+.material--icons{
+    padding-bottom: .1rem;
+    padding-left: .5rem;
+}
+
+.material-icons:hover{
+    color: red;
+    cursor: pointer;
+}
+
+.btn{
+    color: rgb(102,199,255);
+    border: 2px solid rgb(102, 199, 255);
+    border-radius: 15px;
+    padding: .5rem 1rem;
+    text-align: center;
+    display: inline-block;
+}
+
+.btn:hover{
+    color: white;
+    background: rgb(102, 199, 255);
+    cursor: pointer;
+}
+.success{
+    border: 1px solid green;
+    color: green;
+    border-radius: 15px;
+    padding: .5rem 1rem;
+    background: rgb(158, 253, 158);
+    display: none;
+}
+.error{
+    border: 1px solid red;
+    color: red;
+    border-radius: 15px;
+    padding: .5rem 1rem;
+    background: rgb(248, 188, 188);
+    display: none;
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="success" class="success">Emails sent successfully</div>
+    <div id="error" class="error">Invalid Email</div>
+    
+    <div class="container">
+
+        <div id="tag-container" class="tag-container">
+            
+            <!-- <div class="tag">
+                <span>Javascript</span>
+                <i class="material=icons">X</i>
+            </div> -->
+            <input id="myInput">
+        </div>
+
+    </div>
+    <div class = "btn" onclick = "send()">SEND</div>
+    <script>
+        
+
+const tagContainer = document.getElementById('tag-container');
+const input = document.getElementById('myInput');
+
+let tags = [];
+input.addEventListener('keyup', function(e){
+    if(e.key === 'Enter'){
+        tags.push(input.value);
+        addTags();
+        input.value = '';
+    }
+    
+})
+
+function addTags(){
+    reset();
+    tags.slice().reverse().forEach(function(tag){
+        const input = createTag(tag);
+        tagContainer.prepend(input);
+    })
+}
+
+function reset(){
+    document.querySelectorAll('.tag').forEach(function(tag){
+        tag.parentElement.removeChild(tag);
+    })
+
+}
+
+function createTag(label){
+    const div = document.createElement('div');
+    div.setAttribute('class', 'tag');
+    const span = document.createElement('span');
+
+    span.innerHTML = label;
+    const closeBtn = document.createElement('i');
+    closeBtn.setAttribute('class', 'material-icons');
+    closeBtn.setAttribute('data-item', label);
+    closeBtn.innerHTML = 'x';
+
+    div.appendChild(span);
+    div.appendChild(closeBtn);
+    return div;
+}
+
+document.addEventListener('click', function(e){
+    if(e.target.tagName === 'I'){
+        const value = e.target.getAttribute('data-item');
+        const index = tags.indexOf(value);
+        tags * [...tags.slice(0, index), ...tags.slice(index+1)];
+        addTags();
+    }
+})
+
+function send(){
+    valid = true;
+
+    if(tags.length<1){
+        valid = false;
+    }
+    tags.forEach(function(tag){
+        if(!validateEmail(tag)){
+            valid=false;
+        }
+    })
+
+    if(valid == true){
+        sendEmail();
+        for (i = 0; i < tags.length; i++)
+        console.log(tags[i]);
+    }
+    else{
+        document.getElementById('error').style.display = "block";
+        document.getElementById('success').style.display = "none";
+
+    }
+
+
+}
+
+function validateEmail(email){
+    const re = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    return re.test(email);
+
+}
+
+function sendEmail(){
+    document.getElementById('success').style.display = "block";
+    document.getElementById('error').style.display = "none";
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>CYBER GROUP - Sign In</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description"
+    content="Datta Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
+  <meta name="keywords"
+    content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, datta able, datta able bootstrap admin template, free admin theme, free dashboard template" />
+  <meta name="author" content="CodedThemes" />
+
+  <!-- Favicon icon -->
+  <link rel="icon" href="assets/images/logo.png" type="image/x-icon">
+  <!-- fontawesome icon -->
+  <link rel="stylesheet" href="assets/fonts/fontawesome/css/fontawesome-all.min.css">
+  <!-- animation css -->
+  <link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css">
+  <!-- vendor css -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9/sha256.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
+
+
+    /* .form{
+    padding: 30px 40px;
+  } */
+    .form-ctrl {
+      margin-bottom: 10px;
+      padding-bottom: 20px;
+      position: relative;
+    }
+
+    .form-ctrl label {
+      display: inline-block;
+      /* margin-bottom: 5px; */
+    }
+
+    .form-ctrl input {
+      border: 2px solid #f0f0f0;
+      border-radius: 4px;
+      display: block;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 10px;
+      width: 100%;
+    }
+
+    .form-ctrl.success input {
+      border-color: #2ecc71;
+    }
+
+    .form-ctrl.error input {
+      border-color: #e74c3c;
+    }
+
+    .form-ctrl i {
+      position: absolute;
+      top: 40px;
+      right: 10px;
+      visibility: hidden;
+    }
+
+    .form-ctrl.success i.fa-check-circle {
+      color: #2ecc71;
+      visibility: visible;
+    }
+
+    .form-ctrl.error i.fa-exclamation-circle {
+      color: #e74c3c;
+      visibility: visible;
+    }
+
+    .form-ctrl small {
+      visibility: hidden;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    .form-ctrl.error small {
+      color: #e74c3c;
+      visibility: visible;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-content">
+      <div class="auth-bg">
+        <span class="r"></span>
+        <span class="r s"></span>
+        <span class="r s"></span>
+        <span class="r"></span>
+      </div>
+      <div class="card">
+        <div class="card-body text-center">
+          <div class="mb-4">
+            <img src="./assets/images/favicon.png" style="width:25%">
+          </div>
+          <h3 class="mb-4">Login</h3>
+          <div class="form-ctrl input-group mb-3">
+            <input type="email" id="email" class="form-control" placeholder="Email">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+          </div>
+          <div class=" form-ctrl input-group mb-4">
+            <input type="password" id="pwd" class="form-control" placeholder="password">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+          </div>
+
+          <button class="btn btn-primary shadow-2 mb-4" onclick="check();">Login</button>
+          <p class="mb-2 text-muted">Forgot password? <a href="auth-reset-password.html">Reset</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Required Js -->
+  <script src="assets/js/vendor-all.min.js"></script>
+  <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./signin.js"></script>
+
+  <!-- <script src="./pto.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
+    integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

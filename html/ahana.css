@@ -1,0 +1,39 @@
+body{
+    background-color: darkgrey;
+}
+
+.btn{
+    border-color: lightseagreen;
+    background-color: lightskyblue;
+    position:absolute;
+    left: 30vw;
+    
+}
+.float-left submit-button{
+    border-color: lightseagreen;
+    background-color: lightskyblue;
+    position:absolute;
+    left: 30vw;
+
+}
+#sandy{
+    width: 20vw;
+    height: 50vh;
+}
+.row a{
+    display:inline;
+    color: white;
+    float:left;
+    font-size: 17px;
+    padding: 16px;
+    text-decoration:none;
+    text-align:center;
+}
+.row a:hover{
+    background-color: darkgrey;
+}
+
+.intro{
+    background-color: darkgrey;
+    background-image: url("https://th.bing.com/th/id/OIP.FRD-ggJxFZXlBjAeXeulZQHaEK?w=322&h=181&c=7&o=5&pid=1.7") ;
+}

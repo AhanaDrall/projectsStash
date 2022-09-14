@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    
+</head>
+<body >
+    <div style="text-align: center; margin-top: 13vh;">
+    <label for="word">Enter the string:</label>
+    <input type="text" id="word" name="word">
+    <form id = "frm1">
+    </div>     
+<!-- 
+        •	Pascal Case
+•	Snake Case
+•	Upper Case with snake case
+•	Kebab Case
+•	Camel Case -->
+
+
+<div class="dropdown" style="text-align: center; padding-top: 7vh;">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+      Select Case
+    </a>
+  
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li><a class="dropdown-item"  href="#" onclick="myUpper()">UPPERCASE</a></li>
+      <li><a class="dropdown-item" href="#" onclick="myLower()" >lowercase</a></li>
+      <li><a class="dropdown-item" href="#" onclick="myCamel()" >camelCase</a></li>
+      <!-- <li><a class="dropdown-item" href="#" onclick="myPascal()" >PascalCase</a></li> -->
+      <li><a class="dropdown-item" href="#" onclick="mySnake()" >snake_case</a></li>
+      <li><a class="dropdown-item" href="#" onclick="myUppersnake()" >UPPER_SNAKE_CASE</a></li>
+      <li><a class="dropdown-item" href="#" onclick="myKebab()" >kebab-case</a></li>
+    </ul>
+    
+    
+  </div style="padding-top:70px;">        
+
+            <!-- <input type="submit" onclick="myFunction()" value="Submit"> -->
+    </form>
+
+
+    
+
+        <h1>  <span id="myText"></span></h1>
+      
+      
+      
+
+    <script>
+        function myUpper() {
+         var first = document.getElementById("word").value; 
+        
+            
+            var uppercased = first.toUpperCase(); 
+        document.getElementById("myText").innerHTML = uppercased;
+        }
+
+        function myLower() {
+        
+        var second = document.getElementById("word").value; 
+
+
+            var lowercased = second.toLowerCase();
+        document.getElementById("myText").innerHTML = lowercased;
+        }
+
+        function myCamel() {
+        
+        var third = document.getElementById("word").value; 
+
+        function convertToString(input) {
+  
+  if(input) { 
+    
+       if(typeof input === "string") {
+
+            return input;
+        }
+      
+       return String(input);
+  }
+  return '';
+}
+
+
+// convert string to words
+function toWords(input) {							
+
+input = convertToString(input);
+
+var regex = /[A-Z\xC0-\xD6\xD8-\xDE]?[a-z\xDF-\xF6\xF8-\xFF]+|[A-Z\xC0-\xD6\xD8-\xDE]+(?![a-z\xDF-\xF6\xF8-\xFF])|\d+/g;
+
+return input.match(regex);
+
+}
+
+
+// convert the input array to camel case
+function toCamelCase(inputArray) {
+
+let result = "";
+
+for(let i = 0 , len = inputArray.length; i < len; i++) {
+
+  let currentStr = inputArray[i];
+
+  let tempStr = currentStr.toLowerCase();
+
+  if(i != 0) {
+
+    // convert first letter to upper case (the word is in lowercase) 
+      tempStr = tempStr.substr(0, 1).toUpperCase() + tempStr.substr(1);
+
+   }
+  
+   result +=tempStr;
+  
+}
+
+return result;
+}
+
+
+// this function call all other functions
+
+function toCamelCaseString(input) {						
+
+let words = toWords(input);
+
+var camelcased= toCamelCase(words);
+return camelcased;
+
+}
+
+
+        // var camelcased=   ;
+
+        document.getElementById("myText").innerHTML = toCamelCaseString(third);
+        
+        }
+
+        function myPascal() {
+        
+        var fourth = document.getElementById("word").value;
+        // var pascalcased=  ;
+        
+        document.getElementById("myText").innerHTML = pascalcased;
+
+        }
+
+        function mySnake() {
+        
+        var fifth = document.getElementById("word").value; 
+
+        const tosnakecase = str => 
+            str &&
+            str 
+                .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+                .map(x => x.toLowerCase())
+                .join('_');
+        var snakecased =  tosnakecase(fifth)  ;
+
+        document.getElementById("myText").innerHTML = snakecased;
+
+        }
+
+        function myUppersnake() {
+        
+        var sixth = document.getElementById("word").value; 
+        // var uppersnakecased= ;
+        const touppersnakecase = str => 
+            str &&
+            str 
+                .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+                .map(x => x.toUpperCase())
+                .join('_');
+        var uppersnakecased =  touppersnakecase(sixth)  ;
+
+        document.getElementById("myText").innerHTML = uppersnakecased;
+
+        }
+
+        function myKebab() {
+        
+        var seventh = document.getElementById("word").value; 
+
+        const tokebabcase = str => 
+            str &&
+            str 
+                .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+                .map(x => x.toLowerCase())
+                .join('-');
+        var kebabcased =  tokebabcase(seventh)  ;
+        // var kebabcased= ;
+
+        document.getElementById("myText").innerHTML = kebabcased;
+
+        }
+    </script>
+
+</body>
+</html>
